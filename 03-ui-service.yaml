@@ -4,7 +4,7 @@ metadata:
   name: ui-service
   namespace: git-parser
   labels:
-    app: hello
+    app: git-parser
 spec:
   type: ClusterIP
   selector:

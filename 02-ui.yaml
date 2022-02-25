@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: git-parser-ui
+  name: git-parser-ui-app
   namespace: git-parser
 spec:
   selector:
     matchLabels:
       app: git-parser-ui
-  replicas: 3
+  replicas: 1
   template:
     metadata:
       labels:
