@@ -2,6 +2,7 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: myingress  
+  namespace: git-parser
   annotations:    
     kubernetes.io/ingress.class: nginx
     ingress.kubernetes.io/rewrite-target: /
