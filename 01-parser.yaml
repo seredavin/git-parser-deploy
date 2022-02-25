@@ -19,3 +19,5 @@ spec:
         env:
           - name: kafka_bootstrap_servers
             value: 10.0.0.60:9093
+          - name: mongo-host
+            value: 10.0.0.60
