@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: git-parser-ingress
+  namespace: git-parser
+spec:
+  rules:
+  - host: git-parser.seredavin.ru
+    servicePort:
+    http:
+      paths:
+      - backend:
+          serviceName: ui-service
+          servicePort: 80

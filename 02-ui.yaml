@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: git-parser-ui
+  namespace: git-parser
+spec:
+  selector:
+    matchLabels:
+      app: git-parser-ui
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: git-parser-ui
+    spec:
+      containers:
+      - name: git-parser-ui
+        image: "docker.io/seredavin/git-parser-ui:latest"
