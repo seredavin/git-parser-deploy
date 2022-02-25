@@ -6,15 +6,15 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: git-parser-ui
+      app: kafka
   replicas: 1
   template:
     metadata:
       labels:
-        app: git-parser-ui
+        app: kafka
     spec:
       containers:
-      - name: git-parser-ui
+      - name: kafka
         image: "docker.io/bitnami/zookeeper:3.7"
         volumeMounts:
           - mountPath: /bitnami
