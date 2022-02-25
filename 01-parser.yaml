@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: license-parser
+  namespace: git-parser
+spec:
+  selector:
+    matchLabels:
+      app: license-parser
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: license-parser
+    spec:
+      containers:
+      - name: license-parser
+        image: "seredavin/git-license-parser"
+        env:
+          - name: kafka_bootstrap_servers
+            value: 10.0.0.60:9093
