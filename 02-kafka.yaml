@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka
+  namespace: git-parser
+spec:
+  selector:
+    matchLabels:
+      app: git-parser-ui
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: git-parser-ui
+    spec:
+      containers:
+      - name: git-parser-ui
+        image: "docker.io/bitnami/zookeeper:3.7"
+        volumeMounts:
+          - mountPath: /bitnami
+            name: zookeeper_data
+      - name: zookeeper
+        image: docker.io/bitnami/kafka:3
+        volumeMounts:
+          - mountPath: /bitnami
+            name: kafka_data
+        env:
+          - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+          - ALLOW_PLAINTEXT_LISTENER=yes
+          - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+          - KAFKA_CFG_LISTENERS=CLIENT://:9092,EXTERNAL://:9093
+          - KAFKA_CFG_ADVERTISED_LISTENERS=CLIENT://kafka:9092,EXTERNAL://localhost:9093
+          - KAFKA_CFG_INTER_BROKER_LISTENER_NAME=CLIENT
+          - KAFKA_CLIENT_USERS=admin
+          - KAFKA_CLIENT_PASSWORDS=admin-secret
+      volumes:
+        - name: zookeeper_data
+          emptyDir: {}
+        - name: kafka_data
+          emptyDir: {}
