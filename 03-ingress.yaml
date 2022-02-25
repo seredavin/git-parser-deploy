@@ -1,10 +1,10 @@
-apiVersion: networking.k8s.io/v1beta
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: git-parser-ingress
   namespace: git-parser
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - http:
