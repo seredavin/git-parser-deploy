@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: persister
+  namespace: git-parser
+spec:
+  selector:
+    matchLabels:
+      app: persister
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: persister
+    spec:
+      containers:
+      - name: persister
+        image: "seredavin/db-persister"
+        env:
+          - name: kafka_bootstrap_servers
+            value: 10.0.0.60:9093
