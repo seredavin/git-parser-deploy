@@ -10,5 +10,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: ui-service
-          servicePort: 80
+          service:
+            name: ui-service
+            port: 
+              number: 80
