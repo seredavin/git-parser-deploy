@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: git-parser-ui-app
+  name: git-parser-ui
   namespace: git-parser
 spec:
   selector:
