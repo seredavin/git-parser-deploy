@@ -18,3 +18,24 @@ spec:
                 name: ui-service
                 port:
                   number: 80
+          - path: /emitter
+            pathType: Prefix
+            backend:
+              service:
+                name: persister-service
+                port:
+                  number: 80
+          - path: /all
+            pathType: Prefix
+            backend:
+              service:
+                name: persister-service
+                port:
+                  number: 80
+          - path: /add-repo
+            pathType: Prefix
+            backend:
+              service:
+                name: parser-service
+                port:
+                  number: 80
